@@ -48,6 +48,9 @@ def extract_subtitles() -> None:
                 )
                 extractor = rapid_videocr.RapidVideOCR(out_format="srt")
                 tmp_rgb_dir = os.path.join(temp_storage_dir, "RGBImages")
+                for tmp_rgb_name in os.listdir(tmp_rgb_dir):
+                    if '-' in tmp_rgb_name:
+                        os.remove(os.path.join(tmp_rgb_dir, tmp_rgb_name))
                 extractor(
                     video_sub_finder_dir=tmp_rgb_dir,
                     save_dir=srt_dir,
