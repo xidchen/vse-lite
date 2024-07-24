@@ -36,6 +36,7 @@ def extract_subtitles() -> None:
                 if os.path.exists(temp_storage_dir):
                     shutil.rmtree(temp_storage_dir)
                 os.makedirs(temp_storage_dir)
+                os.chdir(cfg.vsf_dir)
                 subprocess.run(
                     [cfg.vsf_exe_path, "-c", "-r",
                      "-i", video_path,
@@ -46,6 +47,7 @@ def extract_subtitles() -> None:
                      "-le", f"{cfg.vsf_left_video_image_percent_end}",
                      "-re", f"{cfg.vsf_right_video_image_percent_end}"]
                 )
+                os.chdir(root_dir)
                 extractor = rapid_videocr.RapidVideOCR(out_format="srt")
                 tmp_rgb_dir = os.path.join(temp_storage_dir, "RGBImages")
                 for tmp_rgb_name in os.listdir(tmp_rgb_dir):

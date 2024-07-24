@@ -18,4 +18,6 @@ vsf_right_video_image_percent_end = 0.99
 if platform.system() == "Windows":
     vsf_dir = r"C:\Exes\VideoSubFinder_6.10_x64\Release_x64"
     vsf_exe_path = os.path.join(vsf_dir, "VideoSubFinderWXW.exe")
-    rgb_dir = os.path.join(vsf_dir, "RGBImages")
+elif platform.system() == "Linux":
+    vsf_dir = os.path.join(os.path.expanduser("~"), "Exes", "VideoSubFinder")
+    vsf_exe_path = "./VideoSubFinderWXW.run"
